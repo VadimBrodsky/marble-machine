@@ -33,4 +33,7 @@
     var MarbleMachine = function(numberOfColours) {
         this.colours = numberOfColours;
     };
-})(window);
+
+    // attach the MarbleMachine to the global object
+    global.MarbleMachine = MarbleMachine;
+}(window));
