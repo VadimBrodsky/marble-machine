@@ -31,7 +31,24 @@
     "use strict";
 
     var MarbleMachine = function(numberOfColours) {
+        this.validate(numberOfColours);
         this.colours = numberOfColours;
+    };
+
+    var marbles = {
+        '1': ['blue'],
+        '2': ['blue', 'green'],
+        '3': ['blue', 'green', 'red'],
+        '4': ['blue', 'green', 'red', 'yellow'],
+        '5': ['blue', 'green', 'red', 'yellow', 'orange']
+    };
+
+    MarbleMachine.prototype = {
+        validate: function(input) {
+            if (marbles[+input] === undefined) {
+                throw new TypeError('Invalid input for MarbleMachine');
+            }
+        }
     };
 
     // attach the MarbleMachine to the global object
