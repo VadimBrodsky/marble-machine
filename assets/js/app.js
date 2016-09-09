@@ -1,6 +1,6 @@
 "use strict";
 
-var mm = new MarbleMachine('3');
+var mm = new MarbleMachine('5');
 
 var all = mm.sequences;
 console.log(all.length);

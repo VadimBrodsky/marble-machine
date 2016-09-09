@@ -41,7 +41,7 @@
             // Get all sequences, sort to match example output
             // Can be broken out to offset performance penalty of object initialization
             this.sequences = privateMethods.allSequences(this.colourNames);
-            this.sequences.sort(privateMethods.sortByArrayLength);
+            // this.sequences.sort(privateMethods.sortByArrayLength);
         }
     };
 
@@ -129,7 +129,7 @@
 
                 seq.forEach(function(colour) {
                     var marble = document.createElement('div');
-                    marble.className = 'marble__' + colour;
+                    marble.className = 'marble marble__' + colour;
                     row.appendChild(marble);
                 });
 
