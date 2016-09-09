@@ -1,10 +1,10 @@
 "use strict";
 
+// MarbleMachine
 var mm = new MarbleMachine('5');
+console.log('Number of sequences: ', mm.sequences.length);
 
-var all = mm.sequences;
-console.log(all.length);
-all.forEach(function(item) {
+mm.sequences.forEach(function(item) {
     console.log(item);
 });
 

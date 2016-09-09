@@ -38,9 +38,11 @@
             this.colours = +input;
             this.colourNames = this.getColourNames();
 
-            // Get all sequences, sort to match example output
+            // Get all sequences
             // Can be broken out to offset performance penalty of object initialization
             this.sequences = privateMethods.allSequences(this.colourNames);
+
+            // Sort to match example output
             // this.sequences.sort(privateMethods.sortByArrayLength);
         }
     };

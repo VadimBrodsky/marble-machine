@@ -35,6 +35,6 @@ describe("MarbleMachine", function(){
     });
 
     it("should return [blue] for input of 1", function() {
-        expect(new MarbleMachine(1).allSequences()).toEqual(['blue']);
+        expect(new MarbleMachine(1).sequences).toEqual(['blue']);
     })
 });
