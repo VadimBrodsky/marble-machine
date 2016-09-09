@@ -8,7 +8,11 @@ My solution to the [Igloo coding challenge B](https://github.com/IglooSoftware/C
 Chosen input is `5`:
 
 ```javascript
+// Initialize the MarbleMachine
 var mm = new MarbleMachine('5');
+
+// Render Marbles to DOM
+mm.renderToDOM('marbles');
 ```
 
 
@@ -16,7 +20,7 @@ var mm = new MarbleMachine('5');
 Resulting output by my program, sorted by first colour. There is an option to sort by sequence length.
 
 ```javascript
-Number of sequences:  325
+// Number of sequences:  325
 ["blue"]
 ["blue", "green"]
 ["blue", "green", "red"]
