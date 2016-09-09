@@ -30,12 +30,16 @@
 (function (global) {
     "use strict";
 
+    // Constructor function
     var MarbleMachine = function(numberOfColours) {
-        if (this.validate(numberOfColours)) {
-            this.colours = numberOfColours;
+        var input = numberOfColours || 1;
+
+        if (this.validate(input)) {
+            this.colours = input;
         }
     };
 
+    // Map of input to marble colours
     var marbles = {
         '1': ['blue'],
         '2': ['blue', 'green'],
@@ -44,7 +48,11 @@
         '5': ['blue', 'green', 'red', 'yellow', 'orange']
     };
 
+
+    // MarbleMachine methods
     MarbleMachine.prototype = {
+
+        // Validates the input for the constructor function
         validate: function(input) {
             if (marbles[+input] === undefined) {
                 throw 'Invalid input for MarbleMachine, input must be 1-5';
@@ -53,6 +61,7 @@
             }
         }
     };
+
 
     // attach the MarbleMachine to the global object
     global.MarbleMachine = MarbleMachine;
