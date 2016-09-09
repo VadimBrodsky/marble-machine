@@ -119,6 +119,25 @@
             return marbles[this.colours];
         },
 
+        // Render marbles to HTML
+        renderToDOM: function(id) {
+            var container = document.getElementById(id);
+
+            this.sequences.forEach(function(seq){
+                var row = document.createElement('div');
+                row.className = 'row';
+
+                seq.forEach(function(colour) {
+                    var marble = document.createElement('div');
+                    marble.className = 'marble__' + colour;
+                    row.appendChild(marble);
+                });
+
+                container.appendChild(row);
+            });
+
+        }
+
     };
 
 

@@ -7,3 +7,5 @@ console.log(all.length);
 all.forEach(function(item) {
     console.log(item);
 });
+
+mm.renderToDOM('marbles');
