@@ -31,8 +31,9 @@
     "use strict";
 
     var MarbleMachine = function(numberOfColours) {
-        this.validate(numberOfColours);
-        this.colours = numberOfColours;
+        if (this.validate(numberOfColours)) {
+            this.colours = numberOfColours;
+        }
     };
 
     var marbles = {
@@ -46,7 +47,9 @@
     MarbleMachine.prototype = {
         validate: function(input) {
             if (marbles[+input] === undefined) {
-                throw new TypeError('Invalid input for MarbleMachine');
+                throw 'Invalid input for MarbleMachine, input must be 1-5';
+            } else {
+                return true;
             }
         }
     };
