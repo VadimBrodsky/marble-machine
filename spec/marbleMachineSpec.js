@@ -33,4 +33,8 @@ describe("MarbleMachine", function(){
     it("should assign 1 as default input", function() {
         expect(new MarbleMachine().colours).toBe(1);
     });
+
+    it("should return [blue] for input of 1", function() {
+        expect(new MarbleMachine(1).allSequences()).toEqual(['blue']);
+    })
 });

@@ -35,7 +35,13 @@
         var input = numberOfColours || 1;
 
         if (this.validate(input)) {
-            this.colours = input;
+            this.colours = +input;
+            this.colourNames = this.getColourNames();
+
+            // Get all sequences, sort to match example output
+            // Can be broken out to offset performance penalty of object initialization
+            this.sequences = privateMethods.allSequences(this.colourNames);
+            this.sequences.sort(privateMethods.sortByArrayLength);
         }
     };
 
@@ -46,6 +52,53 @@
         '3': ['blue', 'green', 'red'],
         '4': ['blue', 'green', 'red', 'yellow'],
         '5': ['blue', 'green', 'red', 'yellow', 'orange']
+    };
+
+    var privateMethods = {
+        // Main algorithm
+        allSequences: function(inputMarbles) {
+            if(inputMarbles.length < 2) {
+                return inputMarbles;
+            } else {
+                return this.processPartial(inputMarbles);
+            }
+        },
+
+        // Like splice but non-mutating
+        removeElementFromArray: function(index, arr) {
+            var head = arr.slice(0, index),
+                tail = arr.slice(index + 1, arr.length);
+
+            return head.concat(tail);
+        },
+
+        // Split the input sequence and add the rest to it
+        processPartial: function(inputMarbles) {
+            var self = this;
+            var sequences = [];
+
+            inputMarbles.forEach(function(marble, index) {
+                // Add the initial marble to the sequence
+                sequences.push([marble]);
+
+                var otherSequence = self.removeElementFromArray(index, inputMarbles);
+
+                // Call the main algorithm recursively
+                var otherSequenceArray = self.allSequences(otherSequence);
+
+                // Assemble the sequences
+                otherSequenceArray.forEach(function(subSequence) {
+                    sequences.push([marble].concat(subSequence));
+                });
+            });
+            return sequences;
+        },
+
+        // Utility function, to sort arrays by their length
+        // From short to long
+        sortByArrayLength: function(a, b) {
+            return a.length - b.length;
+        }
     };
 
 
@@ -59,7 +112,13 @@
             } else {
                 return true;
             }
-        }
+        },
+
+        // Return the array of colour names
+        getColourNames: function(){
+            return marbles[this.colours];
+        },
+
     };
 
 
